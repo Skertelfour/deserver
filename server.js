@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 // Email credentials
 const userEmail = "kaodimnaka@gmail.com";
 const pass = "phffbjesoudfutkq";
+// 30th june
 
 // Rate limiter middleware (e.g., 5 requests per minute per IP)
 const limiter = rateLimit({
